@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Scope;
 public class AppConfig {
  
     @Bean
-    public HelloWorld HelloWorld() {
+    public HelloWorld helloWorld() {
         return new HelloWorld();
     }
 
     @Bean
     @Scope("prototype")
-    public Cat Cat(){
+    public Cat cat(){
        return new Cat();
     }
 }
