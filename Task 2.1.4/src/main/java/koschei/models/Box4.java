@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Ocean1 {
+public class Box4 {
 
-    private final Island2 island;
+    private final Rabbit5 rabbit;
 
     @Autowired
-    public Ocean1(Island2 island) {
-        this.island = island;
+    public Box4(Rabbit5 rabbit) {
+        this.rabbit = rabbit;
     }
 
     @Override
     public String toString() {
-        return "на океане остров, " + island.toString();
+        return "в сундуке заяц, " + rabbit.toString();
     }
 }

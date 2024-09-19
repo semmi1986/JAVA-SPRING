@@ -6,15 +6,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Wood3 {
 
-    private final Rabbit4 rabbit;
+    private final Box4 box4;
 
     @Autowired
-    public Wood3(Rabbit4 rabbit) {
-        this.rabbit = rabbit;
+    public Wood3(Box4 box4) {
+        this.box4 = box4;
     }
 
     @Override
     public String toString() {
-        return ", на дереве заяц " + rabbit.toString();
+        return "на дереве сундук, " + box4.toString();
     }
 }

@@ -1,20 +1,20 @@
 package koschei.models;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Ocean1 {
-
-    private final Island2 island;
+public class Needle8 {
+    public final Deth9 deth;
 
     @Autowired
-    public Ocean1(Island2 island) {
-        this.island = island;
+    public Needle8(Deth9 deth) {
+        this.deth = deth;
     }
 
     @Override
     public String toString() {
-        return "на океане остров, " + island.toString();
+        return "смерть моя на кончике иглы, " + deth.toString();
     }
 }
