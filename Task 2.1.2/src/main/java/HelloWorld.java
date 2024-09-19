@@ -1,13 +1,12 @@
+import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
+
+@Getter
+@Setter
+
 public class HelloWorld {
- 
+
+    @Value("Hello World!")
     private String message;
- 
-    public String getMessage() {
-        return message;
-    }
- 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-     
+
 }
