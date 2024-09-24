@@ -1,5 +1,7 @@
 package hiber.config;
 
+import hiber.model.Car;
+import hiber.model.User;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -39,36 +41,24 @@ public class AppConfig {
    }
 
    @Bean
-   public LocalSessionFactoryBean sessionFactory() {
+   public LocalSessionFactoryBean getSessionFactory() {
       LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
       sessionFactory.setDataSource(getDataSource());
-      sessionFactory.setPackagesToScan("hiber");
-
+//      sessionFactory.setPackagesToScan("hiber");
       Properties hibernateProperties = new Properties();
       hibernateProperties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
       hibernateProperties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
       hibernateProperties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
       sessionFactory.setHibernateProperties(hibernateProperties);
-
+      sessionFactory.setAnnotatedClasses(User.class, Car.class);
 
       return sessionFactory;
-//      LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-//      factoryBean.setDataSource(getDataSource());
-//
-//      Properties props=new Properties();
-//      props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-//      props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-//
-//      factoryBean.setHibernateProperties(props);
-//      factoryBean.setAnnotatedClasses(User.class);
-//      return factoryBean;
    }
 
    @Bean
-   public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+   public HibernateTransactionManager getTransactionManager(SessionFactory getSessionFactory) {
       HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-      transactionManager.setSessionFactory(sessionFactory);
-//      transactionManager.setSessionFactory(getSessionFactory().getObject());
+      transactionManager.setSessionFactory(getSessionFactory);
       return transactionManager;
    }
 }
