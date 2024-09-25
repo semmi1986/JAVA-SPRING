@@ -1,8 +1,9 @@
-package main.dao;
+package main.dao.impl;
 
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import main.dao.UserDAO;
 import main.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,8 +13,8 @@ import java.util.List;
 @Repository
 public class UserDAOImpl implements UserDAO {
 
-   @PersistenceContext
-   private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     @Transactional
@@ -35,16 +36,15 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     @Transactional
-    public void updateUser( User user) {
+    public void updateUser(User user) {
         em.merge(user);
     }
 
     @Override
     @Transactional
     public void deleteUser(Long id) {
-       em.createQuery("delete from User where id=: id")
+        em.createQuery("delete from User where id=: id")
                 .setParameter("id", id)
                 .executeUpdate();
     }
-
 }
