@@ -26,11 +26,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(Long id) {
-        return null;
+        return userDAO.getUserById(id);
     }
 
     @Override
     public void deleteUser(Long id) {
+        userDAO.deleteUser(id);
+    }
 
+    @Override
+    public void updateUser(User user) {
+        userDAO.updateUser(user);
     }
 }

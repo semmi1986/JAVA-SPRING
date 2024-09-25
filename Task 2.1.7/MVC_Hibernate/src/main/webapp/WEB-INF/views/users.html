@@ -16,10 +16,8 @@
                 center; align-items: center;
                 margin-bottom: 5px"
      th:each="users : ${users}">
-    <div th:text="${'Name: ' + users.getName() }">
-    </div>
-    <div th:text="${'Email: ' + users.getEmail()}">
-    </div>
+    <a th:text="${users.getName()}"
+       th:href="@{/users/{id}(id=${users.getId()})}"></a>
 
 </div>
 
