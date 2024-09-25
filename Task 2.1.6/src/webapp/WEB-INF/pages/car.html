@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>
+        <h1>Car</h1>
+    </div>
+    <div style="border: solid 1px black;
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                justify-content:
+                center; align-items: center;
+                margin-bottom: 5px"
+                th:each="cars : ${cars}">
+        <div th:text="${'Name: ' + cars.getName() }">
+        </div>
+        <div th:text="${'Color: ' + cars.getColor()}">
+        </div>
+
+    </div>
+    <button style="cursor: pointer" onclick="document.location='/'">Back</button>
+</body>
+</html>
