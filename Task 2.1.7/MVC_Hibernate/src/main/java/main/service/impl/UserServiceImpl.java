@@ -1,41 +1,76 @@
 package main.service.impl;
 
-import main.dao.UserDAO;
 import main.model.User;
-import main.service.UserService;
+import main.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService {
+@Transactional(readOnly = true)
+
+//public class UserServiceImpl implements UserService {
+//
+//    @Autowired
+//    private UserDAO userDAO;
+//
+//    @Override
+//    public List<User> getAllUsers() {
+//        return userDAO.getAllUsers();
+//    }
+//
+//    @Override
+//    public void addUser(User user) {
+//        userDAO.addUser(user);
+//    }
+//
+//    @Override
+//    public User getUserById(Long id) {
+//        return userDAO.getUserById(id);
+//    }
+//
+//    @Override
+//    public void deleteUser(Long id) {
+//        userDAO.deleteUser(id);
+//    }
+//
+//    @Override
+//    public void updateUser(User user) {
+//        userDAO.updateUser(user);
+//    }
+//}
+public class UserServiceImpl {
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserDAO userDAO;
-
-    @Override
-    public List<User> getAllUsers() {
-        return userDAO.getAllUsers();
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    @Override
-    public void addUser(User user) {
-        userDAO.addUser(user);
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+    public User findById(Long id) {
+        Optional<User> foundPerson = userRepository.findById(id);
+        return foundPerson.orElse(null);
     }
 
-    @Override
-    public User getUserById(Long id) {
-        return userDAO.getUserById(id);
+    @Transactional
+    public void save(User user) {
+        userRepository.save(user);
     }
 
-    @Override
-    public void deleteUser(Long id) {
-        userDAO.deleteUser(id);
+    @Transactional
+    public void update(Long id, User updateuser) {
+        updateuser.setId(id);
+        userRepository.save(updateuser);
     }
 
-    @Override
-    public void updateUser(User user) {
-        userDAO.updateUser(user);
+    @Transactional
+    public void delete(Long id) {
+        userRepository.deleteById(id);
     }
 }

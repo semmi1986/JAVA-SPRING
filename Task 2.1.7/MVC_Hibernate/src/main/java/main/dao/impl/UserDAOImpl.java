@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Repository
+//@Repository
 public class UserDAOImpl implements UserDAO {
 
     @PersistenceContext
