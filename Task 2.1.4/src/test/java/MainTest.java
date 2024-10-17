@@ -17,7 +17,7 @@ public class MainTest {
 
     @Test
     public void mainTest() {
-        String text = "На свете есть океан , на океане остров , на острове дерево , на дереве заяц , в зайце утка , в утке яйцо , в яйце иголка , смерть Кощея на игле :(";
+        String text = "На свете есть океан, на океане остров, на острове дерево, на дереве сундук, в сундуке заяц, в зайце утка, в утке яйцо, в яйце игла, смерть моя на кончике иглы, сломай кончик и я умру :(";
 
         KoscheiTheDeathless koscheiTheDeathless =
                 applicationContext.getBean(KoscheiTheDeathless.class);
